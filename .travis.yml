@@ -11,12 +11,3 @@ branches:
   - tiacxy-os
   except:
   - "/^v\\d.*$/"
-deploy:
-  provider: releases
-  file_glob: true
-  file: $BUILD_DEST/*
-  skip_cleanup: true
-  on:
-    branch: tiacxy-os
-  api-key:
-    secure: bEyrh1cAqWGOPNsXc4PSQqAcm+Q+amkRgvt95TyHun+SxfuISJWGLZ6yx0R5u2IcGRt0KFA4yn7cFynANfrrNTjlz9ogRCsZZnaQez6jOgPehyhsOWuQDydwHY419sb01lgI8SExBuz3QEW8nS4orgCFuV4JLUBbc3x/cGxwNl/ein6/AG7aFdYIo4fEWF1a9NL6WvRyf3zlthZPfLbTRTypJH3QkQS+94w5oRl2oM72FTP2gWKc2NPpO1hGJtIjnjhpKBL59q6aSwiM7j93TmmreyBw8GNfdKxH951EC512Q1HNiN5+OzSqMALWDXrlX0Obe6aWIPyPaEcs10LYx2r7EikRt+SPk9DUw3M6I8dc9GgKqVBFkyW1r6Qq8AFsQ7lZg183pbwqfmTRppeMynJTBBnrmDAFreOfXFQMTPCUVZo4gawq3ZgdZGV8Zviz+bPd2RvNoodfXb1O/Fx1UIeBPq0lIQ3+9FKrWYBIeXxpmo9M4DP4MxBvSvvsjsj3En1TfQVsfvx9iF2jup5KvZo0Ghu3jeRpL/o2J3rBdqxQ5ELH/z17pBTJS7oH8+wNvVItiFiMeIWkqsTKXCmVmLkRkljlZf5md7VxBw87XqA2+qECkWNUjNCEFAi0rwK02xKAGfmqxcJjn2wxxa89DezLqHRCgGha098yg713VLA=
