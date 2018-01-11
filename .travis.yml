@@ -8,14 +8,13 @@ after_success:
 - ls -al builds/$BUILD_NR/*
 branches:
   only:
-  - master
   - tiacxy-os
   except:
   - "/^v\\d.*$/"
 deploy:
   provider: releases
   file_glob: true
-  file: builds/$BUILD_NR/*
+  file: $BUILD_DEST/*
   skip_cleanup: true
   on:
     branch: tiacxy-os
