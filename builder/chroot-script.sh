@@ -260,6 +260,53 @@ echo "Installing rpi-serial-console script"
 wget -q https://raw.githubusercontent.com/lurch/rpi-serial-console/master/rpi-serial-console -O usr/local/bin/rpi-serial-console
 chmod +x usr/local/bin/rpi-serial-console
 
+#Installing HyperPixel LCD screen DOCKER_ENGINE_VERSION
+echo "Installing Pimoroni HyperPixel LCD screen support"
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/boot/overlays/hyperpixel-gpio-backlight.dtbo -o boot/overlays/hyperpixel-gpio-backlight.dtbo
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/boot/overlays/hyperpixel.dtbo -o boot/overlays/hyperpixel.dtbo
+
+echo "# HyperPixel LCD Settings
+dtoverlay=hyperpixel
+overscan_left=0
+overscan_right=0
+overscan_top=0
+overscan_bottom=0
+framebuffer_width=800
+framebuffer_height=480
+enable_dpi_lcd=1
+display_default_lcd=1
+dpi_group=2
+dpi_mode=87
+dpi_output_format=0x6f016
+display_rotate=2
+hdmi_timings=800 0 50 20 50 480 1 3 2 3 0 0 0 60 0 32000000 6
+
+# Use a basic GPIO backlight driver with on/off support
+dtoverlay=hyperpixel-gpio-backlight
+" >> boot/config.txt
+
+pip install evdev
+
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o /usr/bin
+
+curl -sSL http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz -o /tmp/bcm2835-1.52.tar.gz
+cd /tmp
+tar zxvf bcm2835-1.52.tar.gz
+cd bcm2835-1.52
+./configure && make && make install
+
+mkdir /tmp/hyperpixel
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/sources/hyperpixel-init.c -o /tmp/hyperpixel/hyperpixel-init.c
+cd /tmp/hyperpixel
+gcc hyperpixel-init.c -lbcm2835 -o hyperpixel-init
+cp hyperpixel-init /usr/bin
+chmod +x /usr/bin/hyperpixel-init
+
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-init.service -o /usr/lib/systemd/system/hyperpixel-init.service
+systemctl enable hyperpixel-init
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-touch.service -o /usr/lib/systemd/system/hyperpixel-touch.service
+systemctl enable hyperpixel-touch
+
 # cleanup APT cache and lists
 apt-get clean
 rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
