@@ -285,8 +285,7 @@ hdmi_timings=800 0 50 20 50 480 1 3 2 3 0 0 0 60 0 32000000 6
 dtoverlay=hyperpixel-gpio-backlight
 " >> boot/config.txt
 
-apt-get install "linux-headers-$KERNEL_VERSION"
-pip install evdev
+apt-get install -y python-evdev
 
 curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o /usr/bin
 
