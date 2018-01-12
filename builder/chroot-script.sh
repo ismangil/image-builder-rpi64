@@ -290,7 +290,7 @@ wget -q "http://http.us.debian.org/debian/pool/main/p/python-evdev/$EVDEV_DEB"
 dpkg -i "$EVDEV_DEB" || /bin/true
 rm -f "$EVDEV_DEB"
 
-curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o /usr/bin
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o usr/bin
 
 curl -sSL http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz -o /tmp/bcm2835-1.52.tar.gz
 cd /tmp
@@ -302,12 +302,12 @@ mkdir /tmp/hyperpixel
 curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/sources/hyperpixel-init.c -o /tmp/hyperpixel/hyperpixel-init.c
 cd /tmp/hyperpixel
 gcc hyperpixel-init.c -lbcm2835 -o hyperpixel-init
-cp hyperpixel-init /usr/bin
-chmod +x /usr/bin/hyperpixel-init
+cp hyperpixel-init usr/bin
+chmod +x usr/bin/hyperpixel-init
 
-curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-init.service -o /usr/lib/systemd/system/hyperpixel-init.service
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-init.service -o usr/lib/systemd/system/hyperpixel-init.service
 systemctl enable hyperpixel-init
-curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-touch.service -o /usr/lib/systemd/system/hyperpixel-touch.service
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-touch.service -o usr/lib/systemd/system/hyperpixel-touch.service
 systemctl enable hyperpixel-touch
 
 # cleanup APT cache and lists
