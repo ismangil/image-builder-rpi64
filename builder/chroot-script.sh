@@ -290,7 +290,7 @@ wget -q "http://http.us.debian.org/debian/pool/main/p/python-evdev/$EVDEV_DEB"
 dpkg -i "$EVDEV_DEB" || /bin/true
 rm -f "$EVDEV_DEB"
 
-curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o usr/bin
+curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o usr/bin/hyperpixel-touch
 
 curl -sSL http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz -o /tmp/bcm2835-1.52.tar.gz
 cd /tmp
