@@ -285,7 +285,10 @@ hdmi_timings=800 0 50 20 50 480 1 3 2 3 0 0 0 60 0 32000000 6
 dtoverlay=hyperpixel-gpio-backlight
 " >> boot/config.txt
 
-apt-get install -y python-evdev
+EVDEV_DEB="python-evdev_0.7.0+dfsg-2_arm64.deb"
+wget -q "http://http.us.debian.org/debian/pool/main/p/python-evdev/$EVDEV_DEB"
+dpkg -i "$EVDEV_DEB" || /bin/true
+rm -f "$EVDEV_DEB"
 
 curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o /usr/bin
 
