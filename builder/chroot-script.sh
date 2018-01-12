@@ -304,8 +304,8 @@ mkdir /tmp/hyperpixel
 curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/sources/hyperpixel-init.c -o /tmp/hyperpixel/hyperpixel-init.c
 cd /tmp/hyperpixel
 gcc hyperpixel-init.c -lbcm2835 -o hyperpixel-init
-cp hyperpixel-init usr/bin
-chmod +x usr/bin/hyperpixel-init
+cp hyperpixel-init /usr/bin/hyperpixel-init
+chmod +x /usr/bin/hyperpixel-init
 
 curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-init.service -o usr/lib/systemd/system/hyperpixel-init.service
 systemctl enable hyperpixel-init
