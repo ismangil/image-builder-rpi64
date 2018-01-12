@@ -307,10 +307,9 @@ gcc hyperpixel-init.c -lbcm2835 -o hyperpixel-init
 cp hyperpixel-init /usr/bin/hyperpixel-init
 chmod +x /usr/bin/hyperpixel-init
 
-mkdir -p /usr/lib/systemd/system
-curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-init.service -o usr/lib/systemd/system/hyperpixel-init.service
+curl -sSL --create-dirs https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-init.service -o /usr/lib/systemd/system/hyperpixel-init.service
 systemctl enable hyperpixel-init
-curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-touch.service -o usr/lib/systemd/system/hyperpixel-touch.service
+curl -sSL --create-dirs https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/lib/systemd/system/hyperpixel-touch.service -o /usr/lib/systemd/system/hyperpixel-touch.service
 systemctl enable hyperpixel-touch
 
 # cleanup APT cache and lists
