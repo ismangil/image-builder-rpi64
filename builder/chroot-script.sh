@@ -292,6 +292,8 @@ rm -f "$EVDEV_DEB"
 
 curl -sSL https://github.com/pimoroni/hyperpixel/raw/master/requirements/usr/bin/hyperpixel-touch -o usr/bin/hyperpixel-touch
 
+apt-get install -y build-essential
+
 curl -sSL http://www.airspayce.com/mikem/bcm2835/bcm2835-1.52.tar.gz -o /tmp/bcm2835-1.52.tar.gz
 cd /tmp
 tar zxvf bcm2835-1.52.tar.gz
